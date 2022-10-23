@@ -34,7 +34,7 @@
             this.lbWarn = new Sunny.UI.UISymbolLabel();
             this.uiLedBulb1 = new Sunny.UI.UILedBulb();
             this.uiLedBulb2 = new Sunny.UI.UILedBulb();
-            this.uiLedBulb3 = new Sunny.UI.UILedBulb();
+            this.ledCheckState = new Sunny.UI.UILedBulb();
             this.uiLedBulb4 = new Sunny.UI.UILedBulb();
             this.uiLedBulb8 = new Sunny.UI.UILedBulb();
             this.uiLedBulb7 = new Sunny.UI.UILedBulb();
@@ -63,19 +63,25 @@
             this.uiLedBulb12 = new Sunny.UI.UILedBulb();
             this.uiLedBulb13 = new Sunny.UI.UILedBulb();
             this.uiLedBulb14 = new Sunny.UI.UILedBulb();
-            this.uiLedBulb15 = new Sunny.UI.UILedBulb();
-            this.uiLedBulb16 = new Sunny.UI.UILedBulb();
+            this.ledCheckNGResult = new Sunny.UI.UILedBulb();
+            this.ledCheckCleanResult = new Sunny.UI.UILedBulb();
+            this.vmFrontendControl1 = new VMControls.Winform.Release.VmFrontendControl();
+            this.btnStart = new Sunny.UI.UIButton();
+            this.btnOrigin = new Sunny.UI.UIButton();
+            this.btnCheck = new Sunny.UI.UIButton();
+            this.btnConfirm = new Sunny.UI.UIButton();
             this.SuspendLayout();
             // 
             // timerShow
             // 
+            this.timerShow.Enabled = true;
             this.timerShow.Interval = 2000;
             this.timerShow.Tick += new System.EventHandler(this.timerShow_Tick);
             // 
             // uiAnalogMeter1
             // 
             this.uiAnalogMeter1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiAnalogMeter1.Location = new System.Drawing.Point(31, 86);
+            this.uiAnalogMeter1.Location = new System.Drawing.Point(31, 66);
             this.uiAnalogMeter1.MaxValue = 100D;
             this.uiAnalogMeter1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiAnalogMeter1.MinValue = 0D;
@@ -110,8 +116,9 @@
             // 
             // uiLedBulb1
             // 
-            this.uiLedBulb1.Location = new System.Drawing.Point(244, 125);
+            this.uiLedBulb1.Location = new System.Drawing.Point(244, 105);
             this.uiLedBulb1.Name = "uiLedBulb1";
+            this.uiLedBulb1.On = false;
             this.uiLedBulb1.Size = new System.Drawing.Size(32, 32);
             this.uiLedBulb1.TabIndex = 146;
             this.uiLedBulb1.Text = "uiLedBulb1";
@@ -119,27 +126,29 @@
             // 
             // uiLedBulb2
             // 
-            this.uiLedBulb2.Location = new System.Drawing.Point(329, 125);
+            this.uiLedBulb2.Location = new System.Drawing.Point(329, 105);
             this.uiLedBulb2.Name = "uiLedBulb2";
+            this.uiLedBulb2.On = false;
             this.uiLedBulb2.Size = new System.Drawing.Size(32, 32);
             this.uiLedBulb2.TabIndex = 147;
             this.uiLedBulb2.Text = "uiLedBulb2";
             this.uiLedBulb2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLedBulb3
+            // ledCheckState
             // 
-            this.uiLedBulb3.Location = new System.Drawing.Point(499, 125);
-            this.uiLedBulb3.Name = "uiLedBulb3";
-            this.uiLedBulb3.On = false;
-            this.uiLedBulb3.Size = new System.Drawing.Size(32, 32);
-            this.uiLedBulb3.TabIndex = 148;
-            this.uiLedBulb3.Text = "uiLedBulb3";
-            this.uiLedBulb3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.ledCheckState.Location = new System.Drawing.Point(499, 105);
+            this.ledCheckState.Name = "ledCheckState";
+            this.ledCheckState.On = false;
+            this.ledCheckState.Size = new System.Drawing.Size(32, 32);
+            this.ledCheckState.TabIndex = 148;
+            this.ledCheckState.Text = "ledCheckState";
+            this.ledCheckState.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLedBulb4
             // 
-            this.uiLedBulb4.Location = new System.Drawing.Point(414, 125);
+            this.uiLedBulb4.Location = new System.Drawing.Point(414, 105);
             this.uiLedBulb4.Name = "uiLedBulb4";
+            this.uiLedBulb4.On = false;
             this.uiLedBulb4.Size = new System.Drawing.Size(32, 32);
             this.uiLedBulb4.TabIndex = 149;
             this.uiLedBulb4.Text = "uiLedBulb4";
@@ -147,7 +156,7 @@
             // 
             // uiLedBulb8
             // 
-            this.uiLedBulb8.Location = new System.Drawing.Point(244, 198);
+            this.uiLedBulb8.Location = new System.Drawing.Point(244, 178);
             this.uiLedBulb8.Name = "uiLedBulb8";
             this.uiLedBulb8.On = false;
             this.uiLedBulb8.Size = new System.Drawing.Size(32, 32);
@@ -157,7 +166,7 @@
             // 
             // uiLedBulb7
             // 
-            this.uiLedBulb7.Location = new System.Drawing.Point(329, 198);
+            this.uiLedBulb7.Location = new System.Drawing.Point(329, 178);
             this.uiLedBulb7.Name = "uiLedBulb7";
             this.uiLedBulb7.On = false;
             this.uiLedBulb7.Size = new System.Drawing.Size(32, 32);
@@ -167,7 +176,7 @@
             // 
             // uiLedBulb6
             // 
-            this.uiLedBulb6.Location = new System.Drawing.Point(499, 198);
+            this.uiLedBulb6.Location = new System.Drawing.Point(499, 178);
             this.uiLedBulb6.Name = "uiLedBulb6";
             this.uiLedBulb6.On = false;
             this.uiLedBulb6.Size = new System.Drawing.Size(32, 32);
@@ -177,7 +186,7 @@
             // 
             // uiLedBulb5
             // 
-            this.uiLedBulb5.Location = new System.Drawing.Point(414, 198);
+            this.uiLedBulb5.Location = new System.Drawing.Point(414, 178);
             this.uiLedBulb5.Name = "uiLedBulb5";
             this.uiLedBulb5.On = false;
             this.uiLedBulb5.Size = new System.Drawing.Size(32, 32);
@@ -188,7 +197,7 @@
             // uiLabel4
             // 
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel4.Location = new System.Drawing.Point(226, 167);
+            this.uiLabel4.Location = new System.Drawing.Point(226, 147);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(68, 23);
             this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
@@ -200,7 +209,7 @@
             // uiLabel5
             // 
             this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel5.Location = new System.Drawing.Point(226, 243);
+            this.uiLabel5.Location = new System.Drawing.Point(226, 223);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(68, 23);
             this.uiLabel5.Style = Sunny.UI.UIStyle.Custom;
@@ -212,7 +221,7 @@
             // uiLabel6
             // 
             this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel6.Location = new System.Drawing.Point(311, 167);
+            this.uiLabel6.Location = new System.Drawing.Point(311, 147);
             this.uiLabel6.Name = "uiLabel6";
             this.uiLabel6.Size = new System.Drawing.Size(68, 23);
             this.uiLabel6.Style = Sunny.UI.UIStyle.Custom;
@@ -224,7 +233,7 @@
             // uiLabel7
             // 
             this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel7.Location = new System.Drawing.Point(397, 167);
+            this.uiLabel7.Location = new System.Drawing.Point(397, 147);
             this.uiLabel7.Name = "uiLabel7";
             this.uiLabel7.Size = new System.Drawing.Size(68, 23);
             this.uiLabel7.Style = Sunny.UI.UIStyle.Custom;
@@ -236,19 +245,19 @@
             // uiLabel8
             // 
             this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel8.Location = new System.Drawing.Point(481, 167);
+            this.uiLabel8.Location = new System.Drawing.Point(473, 147);
             this.uiLabel8.Name = "uiLabel8";
-            this.uiLabel8.Size = new System.Drawing.Size(68, 23);
+            this.uiLabel8.Size = new System.Drawing.Size(82, 23);
             this.uiLabel8.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel8.TabIndex = 158;
-            this.uiLabel8.Text = "...";
+            this.uiLabel8.Text = "自检状态";
             this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel8.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel9
             // 
             this.uiLabel9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel9.Location = new System.Drawing.Point(311, 243);
+            this.uiLabel9.Location = new System.Drawing.Point(311, 223);
             this.uiLabel9.Name = "uiLabel9";
             this.uiLabel9.Size = new System.Drawing.Size(68, 23);
             this.uiLabel9.Style = Sunny.UI.UIStyle.Custom;
@@ -260,7 +269,7 @@
             // uiLabel10
             // 
             this.uiLabel10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel10.Location = new System.Drawing.Point(396, 243);
+            this.uiLabel10.Location = new System.Drawing.Point(396, 223);
             this.uiLabel10.Name = "uiLabel10";
             this.uiLabel10.Size = new System.Drawing.Size(68, 23);
             this.uiLabel10.Style = Sunny.UI.UIStyle.Custom;
@@ -272,7 +281,7 @@
             // uiLabel11
             // 
             this.uiLabel11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel11.Location = new System.Drawing.Point(481, 243);
+            this.uiLabel11.Location = new System.Drawing.Point(481, 223);
             this.uiLabel11.Name = "uiLabel11";
             this.uiLabel11.Size = new System.Drawing.Size(68, 23);
             this.uiLabel11.Style = Sunny.UI.UIStyle.Custom;
@@ -290,7 +299,7 @@
             this.btnExit.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExit.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExit.Location = new System.Drawing.Point(899, 12);
+            this.btnExit.Location = new System.Drawing.Point(872, 618);
             this.btnExit.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnExit.Name = "btnExit";
             this.btnExit.Radius = 10;
@@ -311,7 +320,7 @@
             // uiLabel1
             // 
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.Location = new System.Drawing.Point(824, 243);
+            this.uiLabel1.Location = new System.Drawing.Point(824, 223);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(68, 23);
             this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
@@ -323,7 +332,7 @@
             // uiLabel2
             // 
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel2.Location = new System.Drawing.Point(739, 243);
+            this.uiLabel2.Location = new System.Drawing.Point(739, 223);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(68, 23);
             this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
@@ -335,7 +344,7 @@
             // uiLabel3
             // 
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel3.Location = new System.Drawing.Point(654, 243);
+            this.uiLabel3.Location = new System.Drawing.Point(654, 223);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(68, 23);
             this.uiLabel3.Style = Sunny.UI.UIStyle.Custom;
@@ -347,7 +356,7 @@
             // uiLabel12
             // 
             this.uiLabel12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel12.Location = new System.Drawing.Point(824, 167);
+            this.uiLabel12.Location = new System.Drawing.Point(824, 147);
             this.uiLabel12.Name = "uiLabel12";
             this.uiLabel12.Size = new System.Drawing.Size(68, 23);
             this.uiLabel12.Style = Sunny.UI.UIStyle.Custom;
@@ -359,7 +368,7 @@
             // uiLabel13
             // 
             this.uiLabel13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel13.Location = new System.Drawing.Point(740, 167);
+            this.uiLabel13.Location = new System.Drawing.Point(740, 147);
             this.uiLabel13.Name = "uiLabel13";
             this.uiLabel13.Size = new System.Drawing.Size(68, 23);
             this.uiLabel13.Style = Sunny.UI.UIStyle.Custom;
@@ -371,19 +380,19 @@
             // uiLabel14
             // 
             this.uiLabel14.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel14.Location = new System.Drawing.Point(654, 167);
+            this.uiLabel14.Location = new System.Drawing.Point(654, 147);
             this.uiLabel14.Name = "uiLabel14";
             this.uiLabel14.Size = new System.Drawing.Size(68, 23);
             this.uiLabel14.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel14.TabIndex = 173;
-            this.uiLabel14.Text = "...";
+            this.uiLabel14.Text = "NG自检";
             this.uiLabel14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel14.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel15
             // 
             this.uiLabel15.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel15.Location = new System.Drawing.Point(569, 243);
+            this.uiLabel15.Location = new System.Drawing.Point(569, 223);
             this.uiLabel15.Name = "uiLabel15";
             this.uiLabel15.Size = new System.Drawing.Size(68, 23);
             this.uiLabel15.Style = Sunny.UI.UIStyle.Custom;
@@ -395,18 +404,18 @@
             // uiLabel16
             // 
             this.uiLabel16.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel16.Location = new System.Drawing.Point(569, 167);
+            this.uiLabel16.Location = new System.Drawing.Point(565, 147);
             this.uiLabel16.Name = "uiLabel16";
-            this.uiLabel16.Size = new System.Drawing.Size(68, 23);
+            this.uiLabel16.Size = new System.Drawing.Size(79, 23);
             this.uiLabel16.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel16.TabIndex = 171;
-            this.uiLabel16.Text = "...";
+            this.uiLabel16.Text = "清洗自检";
             this.uiLabel16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel16.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLedBulb9
             // 
-            this.uiLedBulb9.Location = new System.Drawing.Point(757, 198);
+            this.uiLedBulb9.Location = new System.Drawing.Point(757, 178);
             this.uiLedBulb9.Name = "uiLedBulb9";
             this.uiLedBulb9.On = false;
             this.uiLedBulb9.Size = new System.Drawing.Size(32, 32);
@@ -416,7 +425,7 @@
             // 
             // uiLedBulb10
             // 
-            this.uiLedBulb10.Location = new System.Drawing.Point(842, 198);
+            this.uiLedBulb10.Location = new System.Drawing.Point(842, 178);
             this.uiLedBulb10.Name = "uiLedBulb10";
             this.uiLedBulb10.On = false;
             this.uiLedBulb10.Size = new System.Drawing.Size(32, 32);
@@ -426,7 +435,7 @@
             // 
             // uiLedBulb11
             // 
-            this.uiLedBulb11.Location = new System.Drawing.Point(672, 198);
+            this.uiLedBulb11.Location = new System.Drawing.Point(672, 178);
             this.uiLedBulb11.Name = "uiLedBulb11";
             this.uiLedBulb11.On = false;
             this.uiLedBulb11.Size = new System.Drawing.Size(32, 32);
@@ -436,7 +445,7 @@
             // 
             // uiLedBulb12
             // 
-            this.uiLedBulb12.Location = new System.Drawing.Point(587, 198);
+            this.uiLedBulb12.Location = new System.Drawing.Point(587, 178);
             this.uiLedBulb12.Name = "uiLedBulb12";
             this.uiLedBulb12.On = false;
             this.uiLedBulb12.Size = new System.Drawing.Size(32, 32);
@@ -446,8 +455,9 @@
             // 
             // uiLedBulb13
             // 
-            this.uiLedBulb13.Location = new System.Drawing.Point(757, 125);
+            this.uiLedBulb13.Location = new System.Drawing.Point(757, 105);
             this.uiLedBulb13.Name = "uiLedBulb13";
+            this.uiLedBulb13.On = false;
             this.uiLedBulb13.Size = new System.Drawing.Size(32, 32);
             this.uiLedBulb13.TabIndex = 166;
             this.uiLedBulb13.Text = "uiLedBulb13";
@@ -455,7 +465,7 @@
             // 
             // uiLedBulb14
             // 
-            this.uiLedBulb14.Location = new System.Drawing.Point(842, 125);
+            this.uiLedBulb14.Location = new System.Drawing.Point(842, 105);
             this.uiLedBulb14.Name = "uiLedBulb14";
             this.uiLedBulb14.On = false;
             this.uiLedBulb14.Size = new System.Drawing.Size(32, 32);
@@ -463,29 +473,112 @@
             this.uiLedBulb14.Text = "uiLedBulb14";
             this.uiLedBulb14.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLedBulb15
+            // ledCheckNGResult
             // 
-            this.uiLedBulb15.Location = new System.Drawing.Point(672, 125);
-            this.uiLedBulb15.Name = "uiLedBulb15";
-            this.uiLedBulb15.Size = new System.Drawing.Size(32, 32);
-            this.uiLedBulb15.TabIndex = 164;
-            this.uiLedBulb15.Text = "uiLedBulb15";
-            this.uiLedBulb15.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.ledCheckNGResult.Location = new System.Drawing.Point(672, 105);
+            this.ledCheckNGResult.Name = "ledCheckNGResult";
+            this.ledCheckNGResult.On = false;
+            this.ledCheckNGResult.Size = new System.Drawing.Size(32, 32);
+            this.ledCheckNGResult.TabIndex = 164;
+            this.ledCheckNGResult.Text = "uiLedBulb15";
+            this.ledCheckNGResult.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLedBulb16
+            // ledCheckCleanResult
             // 
-            this.uiLedBulb16.Location = new System.Drawing.Point(587, 125);
-            this.uiLedBulb16.Name = "uiLedBulb16";
-            this.uiLedBulb16.Size = new System.Drawing.Size(32, 32);
-            this.uiLedBulb16.TabIndex = 163;
-            this.uiLedBulb16.Text = "uiLedBulb16";
-            this.uiLedBulb16.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.ledCheckCleanResult.Location = new System.Drawing.Point(587, 105);
+            this.ledCheckCleanResult.Name = "ledCheckCleanResult";
+            this.ledCheckCleanResult.On = false;
+            this.ledCheckCleanResult.Size = new System.Drawing.Size(32, 32);
+            this.ledCheckCleanResult.TabIndex = 163;
+            this.ledCheckCleanResult.Text = "ledCheckResult";
+            this.ledCheckCleanResult.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // vmFrontendControl1
+            // 
+            this.vmFrontendControl1.Location = new System.Drawing.Point(53, 288);
+            this.vmFrontendControl1.Margin = new System.Windows.Forms.Padding(10, 12, 10, 12);
+            this.vmFrontendControl1.Name = "vmFrontendControl1";
+            this.vmFrontendControl1.Size = new System.Drawing.Size(667, 394);
+            this.vmFrontendControl1.TabIndex = 179;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStart.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStart.Location = new System.Drawing.Point(872, 460);
+            this.btnStart.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Radius = 10;
+            this.btnStart.RectSize = 2;
+            this.btnStart.Size = new System.Drawing.Size(113, 47);
+            this.btnStart.StyleCustomMode = true;
+            this.btnStart.TabIndex = 180;
+            this.btnStart.Text = "开始";
+            this.btnStart.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStart.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnOrigin
+            // 
+            this.btnOrigin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOrigin.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOrigin.Location = new System.Drawing.Point(872, 539);
+            this.btnOrigin.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnOrigin.Name = "btnOrigin";
+            this.btnOrigin.Radius = 10;
+            this.btnOrigin.RectSize = 2;
+            this.btnOrigin.Size = new System.Drawing.Size(113, 47);
+            this.btnOrigin.StyleCustomMode = true;
+            this.btnOrigin.TabIndex = 181;
+            this.btnOrigin.Text = "原点";
+            this.btnOrigin.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOrigin.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnOrigin.Click += new System.EventHandler(this.btnOrigin_Click);
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCheck.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCheck.Location = new System.Drawing.Point(872, 302);
+            this.btnCheck.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Radius = 10;
+            this.btnCheck.RectSize = 2;
+            this.btnCheck.Size = new System.Drawing.Size(113, 47);
+            this.btnCheck.StyleCustomMode = true;
+            this.btnCheck.TabIndex = 182;
+            this.btnCheck.Text = "自检";
+            this.btnCheck.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCheck.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirm.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnConfirm.Location = new System.Drawing.Point(872, 381);
+            this.btnConfirm.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Radius = 10;
+            this.btnConfirm.RectSize = 2;
+            this.btnConfirm.Size = new System.Drawing.Size(113, 47);
+            this.btnConfirm.StyleCustomMode = true;
+            this.btnConfirm.TabIndex = 183;
+            this.btnConfirm.Text = "确认";
+            this.btnConfirm.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnConfirm.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // FClean
             // 
             this.AllowShowTitle = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1024, 728);
+            this.Controls.Add(this.btnConfirm);
+            this.Controls.Add(this.btnCheck);
+            this.Controls.Add(this.btnOrigin);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.vmFrontendControl1);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.uiLabel2);
             this.Controls.Add(this.uiLabel3);
@@ -500,8 +593,8 @@
             this.Controls.Add(this.uiLedBulb12);
             this.Controls.Add(this.uiLedBulb13);
             this.Controls.Add(this.uiLedBulb14);
-            this.Controls.Add(this.uiLedBulb15);
-            this.Controls.Add(this.uiLedBulb16);
+            this.Controls.Add(this.ledCheckNGResult);
+            this.Controls.Add(this.ledCheckCleanResult);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.uiLabel11);
             this.Controls.Add(this.uiLabel10);
@@ -516,13 +609,13 @@
             this.Controls.Add(this.uiLedBulb7);
             this.Controls.Add(this.uiLedBulb8);
             this.Controls.Add(this.uiLedBulb4);
-            this.Controls.Add(this.uiLedBulb3);
+            this.Controls.Add(this.ledCheckState);
             this.Controls.Add(this.uiLedBulb2);
             this.Controls.Add(this.uiLedBulb1);
             this.Controls.Add(this.uiAnalogMeter1);
             this.Controls.Add(this.lbWarn);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1440, 900);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FClean";
@@ -531,7 +624,7 @@
             this.ShowFullScreen = true;
             this.ShowTitle = false;
             this.Style = Sunny.UI.UIStyle.Custom;
-            this.Text = "...";
+            this.Text = "s";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 600);
             this.Load += new System.EventHandler(this.FClean_Load);
@@ -546,7 +639,7 @@
         private Sunny.UI.UISymbolLabel lbWarn;
         private Sunny.UI.UILedBulb uiLedBulb1;
         private Sunny.UI.UILedBulb uiLedBulb2;
-        private Sunny.UI.UILedBulb uiLedBulb3;
+        private Sunny.UI.UILedBulb ledCheckState;
         private Sunny.UI.UILedBulb uiLedBulb4;
         private Sunny.UI.UILedBulb uiLedBulb8;
         private Sunny.UI.UILedBulb uiLedBulb7;
@@ -575,7 +668,12 @@
         private Sunny.UI.UILedBulb uiLedBulb12;
         private Sunny.UI.UILedBulb uiLedBulb13;
         private Sunny.UI.UILedBulb uiLedBulb14;
-        private Sunny.UI.UILedBulb uiLedBulb15;
-        private Sunny.UI.UILedBulb uiLedBulb16;
+        private Sunny.UI.UILedBulb ledCheckNGResult;
+        private Sunny.UI.UILedBulb ledCheckCleanResult;
+        private VMControls.Winform.Release.VmFrontendControl vmFrontendControl1;
+        private Sunny.UI.UIButton btnStart;
+        private Sunny.UI.UIButton btnOrigin;
+        private Sunny.UI.UIButton btnCheck;
+        private Sunny.UI.UIButton btnConfirm;
     }
 }

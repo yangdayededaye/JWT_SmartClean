@@ -18,6 +18,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VM.Core;
+using VM.PlatformSDKCS;
 
 namespace JWT_SmartClean
 {
@@ -47,23 +49,48 @@ namespace JWT_SmartClean
                 else
                     lightPLC.State = UILightState.Off;
 
-                //if (Util.initDB())
-                //    lightDB.State = UILightState.On;
-                //else
-                //    lightDB.State = UILightState.Off;
-
-                if (cs.Init()) 
-                    lightScan.State= UILightState.On;
+                if (Util.initDB())
+                    lightDB.State = UILightState.On;
                 else
-                    lightScan.State= UILightState.Off;
-                cs.ReceiveCameraData+= ongetCameraData;
+                    lightDB.State = UILightState.Off;
+
+                //加载视觉
+                try
+                {
+                    VmSolution.Load("D:\\程序备份\\10.23.sol");//加载
+                    SoftConfig.processList = GetCurrentSolProcedureList();
+                    lightScan.State = UILightState.On;
+                }
+                catch (Exception ex)
+                {
+                    lightScan.State = UILightState.Off;
+                }
+
+                //cs.ReceiveCameraData+= ongetCameraData;
             });
             //加载异常配置
             ReadWarnMap();
-            //加载视觉
-            //VmSolution.Load("");//加载
-            //VmSolution.OnWorkStatusEvent += VmSolution_OnWorkStatusEvent;//注册流程状态回调
+            
+            
+            
         }
+
+        /// <summary>
+        /// 获取当前方案的流程列表
+        /// </summary>
+        private List<VmProcedure> GetCurrentSolProcedureList()
+        {
+            List<VmProcedure> procedureList = new List<VmProcedure>();
+            string processName = "";
+            var processInfoList = VmSolution.Instance.GetAllProcedureList();
+            for (int i = 0; i < processInfoList.nNum; i++)
+            {
+                processName = processInfoList.astProcessInfo[i].strProcessName;
+                procedureList.Add((VmProcedure)VmSolution.Instance[processName]);
+            }
+            return procedureList;
+        }
+
         /// <summary>
         /// 相机接受事件
         /// </summary>
@@ -608,46 +635,7 @@ namespace JWT_SmartClean
         }
 
 
-
-
-        //private void VmSolution_OnWorkStatusEvent(VM.PlatformSDKCS.ImvsSdkDefine.IMVS_MODULE_WORK_STAUS workStatusInfo)
-        //{
-        //    try
-        //    {
-        //        if (workStatusInfo.nWorkStatus == 0 && workStatusInfo.nProcessID == 10000)//流程空闲且为流程1
-        //        {
-        //            List<VmDynamicIODefine.IoNameInfo> ioNameInfos = SoftConfig.procedure.ModuResult.GetAllOutputNameInfo();
-        //            if (ioNameInfos.Count != 0)//判断流程结果个数是否为0
-        //            {
-        //                if (ioNameInfos[0].TypeName == IMVS_MODULE_BASE_DATA_TYPE.IMVS_GRAP_TYPE_STRING)//判断流程第一个结果是否为字符串类型
-        //                {
-        //                    //获取流程结果
-        //                    string strResult = SoftConfig.procedure.ModuResult.GetOutputString(ioNameInfos[0].Name).astStringVal[0].strValue;
-        //                    if (strResult != null)
-        //                    {
-
-        //                    }
-        //                    else
-        //                    {
-        //                        //strMessage = "获取结果失败：结果为空!";
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                //strMessage = "获取结果失败：流程结果个数为0!";
-        //            }
-        //        }
-        //    }
-        //    catch (VmException ex)
-        //    {
-        //        //strMessage = "获取结果失败，错误码：0x" + Convert.ToString(ex.errorCode, 16);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //strMessage = "获取结果失败：" + Convert.ToString(ex.Message);
-        //    }
-        //}
+        
 
         public bool ReadWarnMap()
         {
@@ -765,16 +753,17 @@ namespace JWT_SmartClean
 
         private void UserCenter_Click(object sender, EventArgs e)
         {
-            if (ShowAskDialog("请选择需要的操作,点击\"确定\"切换用户,点击\"取消\"修改密码"))
-            {
-                FLogin f = new FLogin(true);
-                f.ShowDialog();
-            }
-            else
-            {
-                FChangePsw f = new FChangePsw();
-                f.ShowDialog();
-            }
+            VmSolution.Instance.Run();
+            //if (ShowAskDialog("请选择需要的操作,点击\"确定\"切换用户,点击\"取消\"修改密码"))
+            //{
+            //    FLogin f = new FLogin(true);
+            //    f.ShowDialog();
+            //}
+            //else
+            //{
+            //    FChangePsw f = new FChangePsw();
+            //    f.ShowDialog();
+            //}
         }
     }
 }

@@ -71,10 +71,10 @@ namespace JWT_SmartClean
                 ctrWidth0 = oldCtrl[ctrlNo].Width;
                 ctrHeight0 = oldCtrl[ctrlNo].Height;
                 ctrlfont = oldCtrl[ctrlNo].f;
-                c.Left = (int)((ctrLeft0) * wScale);//新旧控件之间的线性比例。控件位置只相对于窗体，所以不能加 + wLeft1  
-                c.Top = (int)((ctrTop0) * hScale);//  
-                c.Width = (int)(ctrWidth0 * wScale);//只与最初的大小相关，所以不能与现在的宽度相乘 (int)(c.Width * w);  
-                c.Height = (int)(ctrHeight0 * hScale);//  
+                c.Left = (int)((ctrLeft0) * (c.Name == "vmFrontendControl1"?0.8:wScale));//新旧控件之间的线性比例。控件位置只相对于窗体，所以不能加 + wLeft1  
+                c.Top = (int)((ctrTop0) * (c.Name == "vmFrontendControl1" ? 0.8 : hScale));//  
+                c.Width = (int)(ctrWidth0 * (c.Name == "vmFrontendControl1" ? 1 : wScale));//只与最初的大小相关，所以不能与现在的宽度相乘 (int)(c.Width * w);  
+                c.Height = (int)(ctrHeight0 * (c.Name == "vmFrontendControl1" ? 0.6 : hScale));//  
                 c.Font = new Font(ctrlfont.Name,ctrlfont.Size* hScale, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
                 ctrlNo += 1;
                 if (ExistPanelForm)

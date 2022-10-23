@@ -25,6 +25,7 @@ namespace JWT_SmartClean
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CleanLog> CleanLog { get; set; }
         public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<User> User { get; set; }
     }

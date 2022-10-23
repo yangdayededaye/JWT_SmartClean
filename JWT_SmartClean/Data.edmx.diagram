@@ -5,8 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="969467e009ca40888923999bffc456ab" Name="Diagram1">
-        <EntityTypeShape EntityType="JWT_SmartCleanModel.Log" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="JWT_SmartCleanModel.User" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="JWT_SmartCleanModel.CleanLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="JWT_SmartCleanModel.Log" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="JWT_SmartCleanModel.User" Width="1.5" PointX="2.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

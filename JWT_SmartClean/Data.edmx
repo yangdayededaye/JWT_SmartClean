@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="JWT_SmartCleanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CleanLog">
+          <Key>
+            <PropertyRef Name="LogIndex" />
+          </Key>
+          <Property Name="LogIndex" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTime" Type="datetime" />
+          <Property Name="WorkPieceIndex" Type="int" />
+          <Property Name="BarCode" Type="varchar" MaxLength="50" />
+          <Property Name="Ocr" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="MouseResult" Type="varchar" MaxLength="50" />
+          <Property Name="ReflectPanelResult" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Log">
           <Key>
             <PropertyRef Name="ID" />
@@ -30,6 +43,7 @@
           <Property Name="State" Type="char" MaxLength="1" />
         </EntityType>
         <EntityContainer Name="JWT_SmartCleanModelStoreContainer">
+          <EntitySet Name="CleanLog" EntityType="Self.CleanLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -38,9 +52,23 @@
     <edmx:ConceptualModels>
       <Schema Namespace="JWT_SmartCleanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="JWT_SmartCleanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CleanLog" EntityType="JWT_SmartCleanModel.CleanLog" />
           <EntitySet Name="Log" EntityType="JWT_SmartCleanModel.Log" />
           <EntitySet Name="User" EntityType="JWT_SmartCleanModel.User" />
         </EntityContainer>
+        <EntityType Name="CleanLog">
+          <Key>
+            <PropertyRef Name="LogIndex" />
+          </Key>
+          <Property Name="LogIndex" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTime" Type="DateTime" Precision="3" />
+          <Property Name="WorkPieceIndex" Type="Int32" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ocr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MouseResult" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReflectPanelResult" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Log">
           <Key>
             <PropertyRef Name="ID" />
@@ -71,6 +99,20 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="JWT_SmartCleanModelStoreContainer" CdmEntityContainer="JWT_SmartCleanEntities">
+          <EntitySetMapping Name="CleanLog">
+            <EntityTypeMapping TypeName="JWT_SmartCleanModel.CleanLog">
+              <MappingFragment StoreEntitySet="CleanLog">
+                <ScalarProperty Name="ReflectPanelResult" ColumnName="ReflectPanelResult" />
+                <ScalarProperty Name="MouseResult" ColumnName="MouseResult" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Ocr" ColumnName="Ocr" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="WorkPieceIndex" ColumnName="WorkPieceIndex" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="LogIndex" ColumnName="LogIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Log">
             <EntityTypeMapping TypeName="JWT_SmartCleanModel.Log">
               <MappingFragment StoreEntitySet="Log">

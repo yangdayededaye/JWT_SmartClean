@@ -37,7 +37,6 @@
             this.hbtnReport = new Sunny.UI.UIHeaderButton();
             this.hbtnClean = new Sunny.UI.UIHeaderButton();
             this.plMain = new Sunny.UI.UIPanel();
-            this.vmFrontendControl1 = new VMControls.Winform.Release.VmFrontendControl();
             this.lbTime = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
@@ -212,7 +211,6 @@
             // plMain
             // 
             this.plMain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.plMain.Controls.Add(this.vmFrontendControl1);
             this.plMain.Controls.Add(this.lbTime);
             this.plMain.Controls.Add(this.uiLabel3);
             this.plMain.Controls.Add(this.uiLabel2);
@@ -231,14 +229,6 @@
             this.plMain.Text = null;
             this.plMain.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.plMain.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // vmFrontendControl1
-            // 
-            this.vmFrontendControl1.Location = new System.Drawing.Point(4, 7);
-            this.vmFrontendControl1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.vmFrontendControl1.Name = "vmFrontendControl1";
-            this.vmFrontendControl1.Size = new System.Drawing.Size(1014, 466);
-            this.vmFrontendControl1.TabIndex = 90;
             // 
             // lbTime
             // 
@@ -350,7 +340,7 @@
             this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.plMain);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MaximumSize = new System.Drawing.Size(1440, 900);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FMain_Device";
             this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
@@ -385,7 +375,6 @@
         private Sunny.UI.UILabel lbTime;
         private System.Windows.Forms.Timer timerDateTime;
         private Sunny.UI.UIHeaderButton UserCenter;
-        private VMControls.Winform.Release.VmFrontendControl vmFrontendControl1;
     }
 }
 

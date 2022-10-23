@@ -208,11 +208,8 @@ namespace JWT_SmartClean.Service
                 {
                     melsec_net = new MelsecMcNet();
                     melsec_net.ConnectTimeOut = 2000;
-                   // string ss = ConfigurationManager.AppSettings["PlcIP"].ToString();
-                   // melsec_net.IpAddress = ConfigurationManager.AppSettings["PlcIP"].ToString();
-                    melsec_net.IpAddress = "192.168.0.10";
-                   // melsec_net.Port = int.Parse(ConfigurationManager.AppSettings["PlcPort"].ToString());
-                    melsec_net.Port = 5000;
+                    melsec_net.IpAddress = ConfigurationManager.AppSettings["PlcIP"].ToString();
+                    melsec_net.Port = int.Parse(ConfigurationManager.AppSettings["PlcPort"].ToString());
                     OperateResult connect = melsec_net.ConnectServer();
                     if (connect.IsSuccess)
                     {
@@ -266,7 +263,9 @@ namespace JWT_SmartClean.Service
         {
             try
             {
-                return melsec_net.Write(address,b).IsSuccess;
+                
+                bool bResult = melsec_net.Write(address, b).IsSuccess;
+                return bResult;
             }
             catch (Exception ex)
             {
@@ -320,6 +319,19 @@ namespace JWT_SmartClean.Service
             try
             {
                 OperateResult<bool[]> b = melsec_net.ReadBool(address, iCount);
+                return b.Content;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public UInt16[] ReadUShort(string address, ushort iCount)
+        {
+            try
+            {
+                OperateResult<UInt16[]> b = melsec_net.ReadUInt16(address, iCount);
                 return b.Content;
             }
             catch (Exception ex)
